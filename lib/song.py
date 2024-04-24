@@ -46,48 +46,41 @@
 #         assert(Song.artist_count["Beyonce"] == 1)
 #         assert(Song.artist_count["Nirvana"] == 1)
 #         assert(Song.artist_count["Hall and Oates"] == 2)
+
 class Song:
-    count=0 
-    all=[]   
-    genres=[]    
-    artists=[]    
+    count=0
+    genres=[]
+    artists=[]
     genre_count={}
     artist_count={}
-    def __init__(self,name,artist,genre):
+    def __init__(self,name,artist,genre) :
         self.name=name
         self.artist=artist
         self.genre=genre
         Song.add_song_to_count()
         Song.add_to_genres(genre)
-        Song.add_to_artists(artist)  
-        Song.add_to_genre_count(genre,self) 
+        Song.add_to_artists(artist)
         Song.add_to_artist_count(artist)
-    
-    
+        Song.add_to_genre_count(genre)
+    @classmethod
+    def add_song_to_count(cls,increment=1):
+        cls.count=cls.count+increment
+
     @classmethod
     def add_to_genres(cls,a_genre):
-        # for b in range(len(cls.genres)):
-        #     if a_genre  not in cls.genres[b]:
-                cls.genres.append(a_genre)
-    
+        cls.genres.append(a_genre)
     
     @classmethod
     def add_to_artists(cls,an_artist):
-       cls.artists.append(an_artist)
+        cls.artists.append(an_artist)
+    
     @classmethod
-    def add_song_to_count(cls,incrementor=1):
-       cls.count=cls.count+incrementor
-
-    @classmethod
-    def add_to_genre_count(cls,the_genre,self):       
-         cls.genre_count[the_genre]=cls.genres.count(the_genre)
-         
+    def add_to_genre_count(cls,a_genre):
+        cls.genre_count[a_genre]=cls.genres.count(a_genre)
+        
     @classmethod
     def add_to_artist_count(cls,an_artist):
-         cls.artist_count[an_artist]=cls.artists.count(an_artist)
-         
-       #cls.artist.append(an_artist)
-#Shusho=Song("Shusho","Chritina","gospel")
+        cls.artist_count[an_artist]=cls.artists.count(an_artist)
 
     
 
